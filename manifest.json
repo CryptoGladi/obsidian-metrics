@@ -1,0 +1,9 @@
+{
+  "id": "obsidian-metrics",
+  "name": "Obsidian getting metrics",
+  "version": "0.1.0",
+  "description": "Obsidian plugin for getting metrics",
+  "author": "CryptoGladi",
+  "authorUrl": "https://github.com/CryptoGladi",
+  "isDesktopOnly": false
+}
