@@ -1,4 +1,4 @@
-import { Plugin, TAbstractFile } from 'obsidian';
+import { Plugin, TAbstractFile, Notice } from 'obsidian';
 
 // @ts-ignore
 import rustPlugin from "./pkg/wasm_module_bg.wasm";
@@ -14,6 +14,8 @@ export default class MyPlugin extends Plugin {
 			name: 'Get metrics to json',
 			callback: async () => {
 				console.time("getMetrics");
+				new Notice('Getting metrics...');
+
 				let files = this.app.vault.getMarkdownFiles();
 
 				// @ts-ignore
@@ -37,7 +39,9 @@ export default class MyPlugin extends Plugin {
 					this.app.vault.delete(file_metrics);
 
 				this.app.vault.create("metrics.json", json_metrics);
+
 				console.timeEnd("getMetrics");
+				new Notice('Done getting metrics!');
 			}
 		});
 	}

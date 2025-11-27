@@ -34,7 +34,7 @@ pub fn get_json_metrics(notes: Vec<NoteInfo>, path_to_vault: String) -> String {
         .filter_map(Result::ok)
         .build_vault(&VaultOptions::new(&path_to_vault));
 
-    let ungraph = vault.get_ungraph().unwrap();
+    //let ungraph = vault.get_ungraph().unwrap();
     let digraph = vault.get_digraph().unwrap();
 
     let metrics = Metrics {
@@ -43,9 +43,9 @@ pub fn get_json_metrics(notes: Vec<NoteInfo>, path_to_vault: String) -> String {
             .iter()
             .map(|note| NoteMetrics::new(note, &path_to_vault))
             .collect(),
-        ungraph: ungraph.map_owned(|_, note| NoteMetrics::new(note, &path_to_vault), |_, _| {}),
+        //ungraph: ungraph.map_owned(|_, note| NoteMetrics::new(note, &path_to_vault), |_, _| {}),
         digraph: digraph.map_owned(|_, note| NoteMetrics::new(note, &path_to_vault), |_, _| {}),
-        count_duplicated_notes: vault.get_duplicates_notes_by_name().len(),
+        count_duplicated_notes_by_name: vault.get_duplicates_notes_by_name().len(),
     };
 
     serde_json::to_string(&metrics).unwrap_or("ERROR serde".to_string())

@@ -1,7 +1,7 @@
 use crate::Properties;
 use crate::note_memory_only::NoteMemoryOnly;
 use obsidian_parser::prelude::*;
-use petgraph::graph::{DiGraph, UnGraph};
+use petgraph::graph::DiGraph;
 use serde::Serialize;
 
 #[derive(Debug, Clone, Serialize)]
@@ -94,7 +94,7 @@ impl NoteMetrics {
 #[derive(Debug, Clone, Serialize)]
 pub struct Metrics {
     pub note_info: Vec<NoteMetrics>,
-    pub ungraph: UnGraph<NoteMetrics, ()>,
+    //pub ungraph: UnGraph<NoteMetrics, ()>,
     pub digraph: DiGraph<NoteMetrics, ()>,
-    pub count_duplicated_notes: usize,
+    pub count_duplicated_notes_by_name: usize,
 }
